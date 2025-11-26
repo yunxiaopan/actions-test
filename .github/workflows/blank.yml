@@ -1,0 +1,36 @@
+# This is a basic workflow to help you get started with Actions
+
+名字:CI
+
+# Controls when the workflow will run
+在:
+#在推或拉请求事件上触发工作流，但只针对“主”分支
+  push:
+分支：[“主要”]
+  pull_request:
+分支：[“主要”]
+
+#允许您从Actions选项卡手动运行此工作流
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+工作:
+#这个工作流包含一个名为“build”的任务
+  build:
+#作业将运行的运行器类型
+上运行:ubuntu-latest
+
+# Steps表示将作为作业的一部分执行的一系列任务
+    steps:
+签出$GITHUB_WORKSPACE下的存储库，以便您的作业可以访问它
+-使用：actions/checkout@v4
+
+#使用运行器shell运行单个命令
+—name：执行一行脚本
+运行：echo Hello， world！
+
+#使用运行器shell运行一组命令
+—name：执行多行脚本
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
